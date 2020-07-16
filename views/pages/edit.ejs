@@ -1,0 +1,99 @@
+<%- include('../partials/header'); -%>
+
+<!-- Page Header -->
+<header class="masthead">
+  <div class="overlay"></div>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-md-10 mx-auto">
+        <div class="page-heading">
+          <h1>Edit Post</h1>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-8 offset-md-2">
+      <% if (post) { %>
+      <form
+        action="/edit/<%= post.id %>"
+        method="POST"
+        encType="multipart/form-data"
+      >
+        <div class="control-group">
+          <div class="form-group floating-label-form-group controls">
+            <label>Username</label>
+            <input
+              type="text"
+              name="username"
+              placeholder="Username"
+              class="form-control"
+              value="<%= post.username %>"
+            />
+          </div>
+        </div>
+        <div class="control-group">
+          <div class="form-group floating-label-form-group controls">
+            <label>Title</label>
+            <input
+              type="text"
+              name="title"
+              placeholder="Title"
+              class="form-control"
+              value="<%= post.title %>"
+            />
+          </div>
+        </div>
+        <div class="control-group">
+          <div class="form-group floating-label-form-group controls">
+            <label>Description</label>
+            <input
+              type="text"
+              name="description"
+              placeholder="Description"
+              class="form-control"
+              value="<%= post.description %>"
+            />
+          </div>
+        </div>
+        <div class="control-group">
+          <div class="form-group floating-label-form-group controls">
+            <label>Content</label>
+            <textarea
+              id="mytextarea"
+              name="content"
+              placeholder="Content ..."
+              cols="30"
+              rows="10"
+              class="form-control"
+            >
+<%= post.content %></textarea
+            >
+          </div>
+        </div>
+        <br />
+        <div id="success"></div>
+        <button type="submit" class="btn btn-primary">Update Post</button>
+      </form>
+      <% } else { %>
+      <p class="text-center">
+        No posts found. Go <a href="/posts/new">here</a> to add posts.
+      </p>
+      <% } %>
+    </div>
+  </div>
+</div>
+
+<!-- <script src="https://cdn.tiny.cloud/1/zvbp0eaa4fnyqmmwky2m3h85nqn5vd3acwagf5b19khbzdah/tinymce/5/tinymce.min.js" referrerpolicy="origin"/></script>
+<script>
+  tinymce.init({
+    selector: '#mytextarea'
+  });
+</script> -->
+
+<hr />
+
+<%- include('../partials/footer'); -%>
